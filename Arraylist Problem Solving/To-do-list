@@ -1,0 +1,105 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+ 
+class Task {
+    private String description;
+    private boolean isComplete;
+ 
+    public Task(String description) {
+        this.description = description;
+        this.isComplete = false;
+    }
+ 
+    public void markComplete() {
+        isComplete = true;
+    }
+ 
+    public boolean isComplete() {
+        return isComplete;
+    }
+ 
+    @Override
+    public String toString() {
+        return (isComplete ? "[X]" : "[ ]") + " " + description;
+    }
+}
+ 
+public class Prob3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Task> tasks = new ArrayList<>();
+ 
+        while (true) {
+            System.out.println("\nOptions:");
+            System.out.println("1. Add Task");
+            System.out.println("2. Mark as Complete");
+            System.out.println("3. Remove Task");
+            System.out.println("4. List of Task");
+            System.out.println("5. Quit");
+            System.out.print("Select an option: ");
+ 
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+ 
+            if (choice == 1) {
+                System.out.print("Enter task description: ");
+                String description = scanner.nextLine();
+                tasks.add(new Task(description));
+                System.out.println("Task added!");
+            } else if (choice == 2) {
+                if (tasks.isEmpty()) {
+                    System.out.println("Task list is empty.");
+                } else {
+                    listTasks(tasks);
+                    int index = scanner.nextInt();
+                    scanner.nextLine();
+                    if (isValidIndex(index, tasks.size())) {
+                        tasks.get(index - 1).markComplete();
+                        System.out.println("Task marked as complete!");
+                    } else {
+                        System.out.println("Invalid task index.");
+                    }
+                }
+            } else if (choice == 3) {
+                if (tasks.isEmpty()) {
+                    System.out.println("Task list is empty.");
+                } else {
+                    listTasks(tasks);
+                    int index = scanner.nextInt();
+                    scanner.nextLine();
+                    if (isValidIndex(index, tasks.size())) {
+                        tasks.remove(index - 1);
+                        System.out.println("Task removed!");
+                    } else {
+                        System.out.println("Invalid task index.");
+                    }
+                }
+            } else if (choice == 4) {
+                if (tasks.isEmpty()) {
+                    System.out.println("Task list is empty.");
+                } else {
+                    System.out.println("List of Tasks:");
+                    listTasks(tasks);
+                }
+            } else if (choice == 5) {
+                System.out.println("Tama yan, mag procastinate ka lang g!");
+                scanner.close();
+                System.exit(0);
+            } else {
+                System.out.println("Invalid option. Please select a valid option.");
+            }
+        }
+    }
+ 
+    private static void listTasks(ArrayList<Task> tasks) {
+        System.out.println("Tasks:");
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + ". " + tasks.get(i));
+        }
+        System.out.print("Select a task (1-" + tasks.size() + "): ");
+    }
+ 
+    private static boolean isValidIndex(int index, int size) {
+        return index >= 1 && index <= size;
+    }
+}
