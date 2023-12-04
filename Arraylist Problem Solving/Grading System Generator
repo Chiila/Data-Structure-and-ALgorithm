@@ -1,0 +1,46 @@
+import java.util.Scanner;
+ 
+public class Prob2 {
+ 
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+ 
+        // Step 2: Ask the user to input the student's score
+        System.out.print("Enter the student's grade: ");
+        double grade = scanner.nextDouble();
+ 
+        // Step 3: Check if the score is within the valid range (0 to 100)
+        if (grade < 0 || grade > 100) {
+            // Step 4: If not within the valid range, show an error message and end
+            System.out.println("Error: Grade is not within the valid range (0 to 100).");
+        } else {
+            // Step 5: Determine the grading score based on the specified criteria
+            double gradingGrade;
+            if (grade >= 96 && grade <= 100) {
+            	gradingGrade = 4.0;
+            } else if (grade >= 90) {
+            	gradingGrade = 3.5;
+            } else if (grade >= 84) {
+            	gradingGrade = 3.0;
+            } else if (grade >= 78) {
+            	gradingGrade = 2.5;
+            } else if (grade >= 72) {
+            	gradingGrade = 2.0;
+            } else if (grade >= 66) {
+            	gradingGrade = 1.5;
+            } else if (grade >= 60) {
+            	gradingGrade = 1.0;
+            } else {
+                // Step 8: Assign a grading score of 0.0 for scores less than 60 (fail)
+            	gradingGrade = 0.0;
+            	System.out.println("Fail");
+            }
+ 
+            // Step 6: Display the assigned grading score to the user
+            System.out.println("The assigned grade is: " + gradingGrade);
+        }
+ 
+        // Step 7: End the program
+        scanner.close();
+    }
+}
