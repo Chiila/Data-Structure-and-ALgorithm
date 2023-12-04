@@ -1,0 +1,33 @@
+import java.util.Scanner;
+ 
+public class Prob1 {
+ 
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+ 
+        // Step 2: Ask the user for the temperature to convert.
+        System.out.print("Enter the temperature to convert: ");
+        double temperature = scanner.nextDouble();
+ 
+        // Step 3: Ask the user to specify the current temperature scale.
+        System.out.print("Enter the current temperature scale (Fahrenheit or Celsius): ");
+        scanner.nextLine(); // Consume the newline character
+        String scale = scanner.nextLine().toLowerCase(); // Convert to lowercase for case-insensitivity
+ 
+        double convertedTemperature = 0.0;
+ 
+        // Steps 4 and 5: Convert the temperature based on the current scale.
+        if (scale.equals("fahrenheit")) {
+            convertedTemperature = (temperature - 32) * 5.0 / 9.0;
+            System.out.println("Converted temperature in Celsius: " + convertedTemperature + " °C");
+        } else if (scale.equals("celsius")) {
+            convertedTemperature = (temperature * 9.0 / 5.0) + 32;
+            System.out.println("Converted temperature in Fahrenheit: " + convertedTemperature + " °F");
+        } else {
+            System.out.println("Invalid temperature scale. Please enter 'Fahrenheit' or 'Celsius'.");
+        }
+ 
+        // Step 7: End the program.
+        scanner.close();
+    }
+}
