@@ -1,0 +1,33 @@
+import java.util.Scanner;
+ 
+public class Prob5 {
+ 
+	public static void main(String[] args) {
+
+		 Scanner scanner = new Scanner(System.in);
+ 
+	        // Step 2: Ask the user to input a text.
+
+	        System.out.print("Enter a text: ");
+
+	        String inputText = scanner.nextLine();
+ 
+	        // Step 3: Break down the input text into words.
+
+	        String[] words = inputText.split("\\s+");
+ 
+	        // Step 4: Count the number of words in the tokenized text.
+
+	        int wordCount = words.length;
+ 
+	        // Step 5: Display the word count.
+
+	        System.out.println("Word Count: " + wordCount);
+ 
+	        // Step 6: End.
+
+	        scanner.close();
+ 
+	}
+ 
+}
