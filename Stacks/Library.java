@@ -11,10 +11,17 @@ public class Library {
     }
 	
 	public void Start() {
-		Scanner sc = new Scanner(System.in);
+	   Scanner sc = new Scanner(System.in);
+		
         boolean validInput = false;
-            System.out.println("\nWhat do you want to do? \n[1] DISPLAY BOOKS \n[2] ADD BOOKS \n[3] BORROW BOOKS \n[4] RETURN BOOKS \n[5] EXIT");
-        while (!validInput) {
+            System.out.println("\nWhat do you want to do?");
+            System.out.println("[1] DISPLAY BOOKS");
+            System.out.println("[2] ADD BOOKS");
+	    System.out.println("[3] BORROW BOOKS");
+	    System.out.println("[4] RETURN BOOKS");
+	    System.out.println("[5] EXIT");
+		
+		while (!validInput) {
 
             try {
                 int ans = sc.nextInt();
@@ -26,14 +33,14 @@ public class Library {
                         validInput = true;
                         break;
 
-					case 2:
-						System.out.print("Enter book name: ");
-						String bookName = sc.nextLine();
-						System.out.print("Enter author: "); 
-						String author = sc.nextLine(); 
-						addBooks(bookName, author); 
-						validInput = true;
-						break;
+		    case 2:
+			System.out.print("Enter book name: ");
+			String bookName = sc.nextLine();
+			System.out.print("Enter author: "); 
+			String author = sc.nextLine(); 
+			addBooks(bookName, author); 
+			validInput = true;
+			break;
 
                     case 3:
                     	System.out.print("Enter book name: ");
@@ -44,12 +51,12 @@ public class Library {
 
                     case 4:
                     	System.out.print("Enter book name: ");
-						String bookReturn = sc.nextLine();
-						System.out.print("Enter author: "); 
-						String authorReturn = sc.nextLine(); 
-						addBooks(bookReturn, authorReturn); 
-						validInput = true;
-						break;
+			String bookReturn = sc.nextLine();
+			System.out.print("Enter author: "); 
+			String authorReturn = sc.nextLine(); 
+			addBooks(bookReturn, authorReturn); 
+			validInput = true;
+			break;
                         
                     case 5:
                         System.out.println("Adios kaibigang bangus!");
@@ -64,7 +71,6 @@ public class Library {
                 sc.nextLine(); 
             }
         }
-
 		
 	}
 	
@@ -73,7 +79,7 @@ public class Library {
 		   while(true) {
 			   int ans = sc.nextInt();
 			if(books.isEmpty()) {
-				System.out.println("The library is empty");
+				System.out.println("The library is empty.");
 			    Start();
 			}else{
 				if(ans == 1) {
@@ -94,7 +100,7 @@ public class Library {
 	   public void addBooks(String bookName, String author) {
         Book book = new Book(bookName, author);
         books.push(book);
-        System.out.println(bookName + " by " + author + " has been added");
+        System.out.println(bookName + " by " + author + " has been added!");
         Start();
     }
 	   
@@ -104,16 +110,16 @@ public class Library {
 		for (Book book : books) {
 			if (book.getTitle().equalsIgnoreCase(bookName)) { 
 				books.remove(book);
-				System.out.println(bookName + " has been borrowed");
+				System.out.println(bookName + " has been borrowed.");
 				bookFound = true;
 				break;
 			}
 		}
 
 		if (!bookFound) {
-			System.out.println(bookName + " not found");
+			System.out.println(bookName + " not found.");
 		} else if (books.isEmpty()) {
-			System.out.println("The library is empty");
+			System.out.println("The library is empty.");
 		}
 		Start();
 	}
@@ -121,7 +127,7 @@ public class Library {
 	   public void returnBooks(String bookName, String author) {
         Book book = new Book(bookName, author);
         books.push(book);
-        System.out.println(bookName + " by " + author + " has been returned");
+        System.out.println(bookName + " by " + author + " has been returned.");
         Start();
     }
 
